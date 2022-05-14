@@ -1,6 +1,5 @@
 import Head from "next/head";
 import {Link, Box} from "@mui/material";
-import NewApp from "../component/test";
 
 export default function Home() {
   return (
@@ -11,7 +10,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NewApp />
         <Box
           sx={{
             width: 300,
