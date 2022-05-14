@@ -1,6 +1,4 @@
 import {ThemeProvider, createTheme} from "@mui/material/styles";
-import {useTheme, StylesProvider} from "@material-ui/core/styles";
-import styled, {ThemeProvider as SCThemeProvider} from "styled-components";
 
 const theme = createTheme({
   breakpoints: {
@@ -20,13 +18,7 @@ const theme = createTheme({
 });
 
 const Theme = ({children}) => {
-  const muiTheme = useTheme();
-  return;
-  <StylesProvider injectFirst>
-    <SCThemeProvider theme={muiTheme}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>;
-    </SCThemeProvider>
-  </StylesProvider>;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default Theme;
