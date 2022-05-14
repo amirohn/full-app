@@ -6,8 +6,8 @@ export const SignUpForm = () => {
     <>
       <FormParent>this is a test</FormParent>
       <Button variant="contained" color="primary">
-          click me
-        </Button>
+        click me
+      </Button>
     </>
   );
 };
