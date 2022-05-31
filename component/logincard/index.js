@@ -1,4 +1,8 @@
-import {FormParent, CardChild, FormContainer} from "./SignUpForm.styled";
+import {
+  FormParent,
+  CardChild,
+  FormContainer,
+} from "../signUpForm/SignUpForm.styled";
 import {
   Typography,
   Card,
@@ -13,20 +17,15 @@ import {
 import {makeStyles} from "@mui/styles";
 import {useState, useEffect} from "react";
 import {controller, useFormContext} from "react-hook-form";
-import {validate} from "./validate";
+import {validate} from "../signUpForm/validate";
 
-export const SignUpForm = () => {
+export const LoginCard = () => {
   // const [isValid, setIsValid] = useState(true);
   const [errors, setErrors] = useState({});
   const [focused, setFocused] = useState({});
   const [content, setContent] = useState({
     username: "",
-    email: "",
     passwordI: "",
-    confirmPassword: "",
-    value: "",
-    isAccepted: false,
-    isValid: true,
   });
 
   const handleChange = (event) => {
@@ -37,18 +36,12 @@ export const SignUpForm = () => {
   const handleFocus = (event) => {
     setFocused({...focused, [event.target.name]: true});
   };
+  console.log(errors);
 
   useEffect(() => {
-    setErrors(validate(content, "signUp"));
+    setErrors(validate(content, "login"));
   }, [content]);
-  !errors.isValid &&
-  content.username &&
-  !errors.email &&
-  content.passwordI &&
-  content.confirmPassword &&
-  content.passwordI === content.confirmPassword &&
-  content.username &&
-  content.isAccepted
+  !errors.isValid && content.username && content.passwordI
     ? (content.isValid = false)
     : (content.isValid = true);
 
@@ -59,11 +52,7 @@ export const SignUpForm = () => {
   return (
     <>
       <FormParent
-        style={{
-          maxWidth: "600px",
-          margin: "auto",
-          padding: "4rem 0",
-        }}
+        style={{maxWidth: "600px", margin: "auto", padding: "4rem 0"}}
       >
         <FormContainer>
           <Card className="formCard">
@@ -71,7 +60,7 @@ export const SignUpForm = () => {
               <CardChild>
                 <Stack spacing={6}>
                   <Typography as="h3" fontWeight="bold" fontSize="2rem">
-                    Sign Up
+                    Login
                   </Typography>
                   <Box>
                     <TextField
@@ -93,24 +82,6 @@ export const SignUpForm = () => {
                   <Box>
                     <TextField
                       id="outlined-basic"
-                      label="email"
-                      variant="outlined"
-                      autoComplete="on"
-                      type="text"
-                      name="email"
-                      value={content.email}
-                      onChange={handleChange}
-                      fullWidth
-                      onBlur={handleFocus}
-                    />
-                    <Typography color="error" variant="body1">
-                      {errors.email && focused.email && errors.email}
-                    </Typography>
-                  </Box>
-
-                  <Box>
-                    <TextField
-                      id="outlined-basic"
                       label="Password"
                       variant="outlined"
                       autoComplete="on"
@@ -127,47 +98,6 @@ export const SignUpForm = () => {
                         errors.passwordI}
                     </Typography>
                   </Box>
-
-                  <Box>
-                    <TextField
-                      id="outlined-basic"
-                      label="confirm password"
-                      variant="outlined"
-                      autoComplete="on"
-                      type="password"
-                      name="confirmPassword"
-                      value={content.confirmPassword}
-                      onChange={handleChange}
-                      fullWidth
-                      onBlur={handleFocus}
-                    />
-                    <Typography color="error" variant="body1">
-                      {errors.confirmPassword &&
-                        focused.confirmPassword &&
-                        errors.confirmPassword}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography variant="body1" color="initial">
-                      I Agree to the Terms & Conditions
-                      <Checkbox
-                        {...content.isAccepted}
-                        type="checkbox"
-                        name="isAccepted"
-                        value={content.isAccepted}
-                        onChange={handleChange}
-                        fullWidth
-                        onBlur={handleFocus}
-
-                        // inputProps={{"aria-label": "controlled"}}
-                      />
-                    </Typography>
-                    <Typography color="error" variant="body1">
-                      {errors.isAccepted &&
-                        focused.isAccepted &&
-                        errors.isAccepted}
-                    </Typography>
-                  </Box>
                   <Box>
                     <Button
                       sx={{
@@ -176,7 +106,7 @@ export const SignUpForm = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      <Link href="/login"> Login</Link>
+                      <Link href="sign-up-form"> Sign Up</Link>
                     </Button>
                     <Button
                       variant="contained"
