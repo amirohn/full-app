@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const FormParent = styled.div`
-  margin: 4rem auto;
+  margin: 0 auto;
+  padding: 4rem 0;
   display: flex;
   justify-content: center;
   .formCard {
     width: calc(100vw);
     ${(props) => props.theme.breakpoints.up("md")} {
-      width: 60vw;
+      width: 40vw !important;
     }
   }
 `;
@@ -19,17 +20,3 @@ export const CardChild = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-
-// export const AppBar = styled.div`
-//   ${(props) => props.theme.breakpoints.up("sm")} {
-//     background-color: orange;
-//   }
-//   ${(props) => props.theme.breakpoints.up("md")} {
-//     background-color: yellow;
-//     color: black;
-//   }
-//   ${(props) => props.theme.breakpoints.up("lg")} {
-//     background-color: green;
-//     color: white;
-//   }
-// `;

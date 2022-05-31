@@ -1,4 +1,4 @@
-export const validate = (content) => {
+export const validate = (content, type) => {
   const errors = {};
 
   if (!content.username.trim()) {
@@ -33,16 +33,18 @@ export const validate = (content) => {
   } else {
     delete errors.isAccepted;
   }
-  if (
+  if (type === "signUp") {
     content.username &&
     content.email &&
-    content.passwordI &&
+    content.passwordI.length > 6 &&
     content.confirmPassword &&
     content.isAccepted
-  ) {
-    errors.isValid = false;
+      ? (errors.isValid = false)
+      : (errors.isValid = true);
   } else {
-    errors.isValid = true;
+    content.username && content.passwordI.length > 6
+      ? (errors.isValid = false)
+      : (errors.isValid = true);
   }
   return errors;
 };
