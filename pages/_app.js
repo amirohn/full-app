@@ -1,12 +1,15 @@
 import "../styles/globals.css";
 import Theme from "../styles/global/theme";
 import {ProductContextProvider} from "../context//prodcutContext";
+import {Layout} from "../Layout/layout";
 
 function MyApp({Component, pageProps}) {
   return (
     <Theme>
       <ProductContextProvider>
-        <Component {...pageProps} />;
+        <Layout>
+          <Component {...pageProps} />;
+        </Layout>
       </ProductContextProvider>
     </Theme>
   );
