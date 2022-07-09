@@ -24,7 +24,7 @@ export const Store = () => {
                 <CardMedia
                   component="img"
                   height="250px"
-                  image={item.image}
+                  image={item.images[0]}
                   alt={item.title}
                 ></CardMedia>
                 <Box>{item.title}</Box>
