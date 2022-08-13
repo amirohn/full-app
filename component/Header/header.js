@@ -42,7 +42,7 @@ export const Header = () => {
             </Button>
           </ListItem>
           <ListItem>
-            <Button href="/sign-up-form">
+            <Button href="/login">
               <ListItemText primary="Login" />
             </Button>
           </ListItem>

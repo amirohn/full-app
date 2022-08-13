@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import Theme from "../styles/global/theme";
-import {ProductContextProvider} from "../context//prodcutContext";
+import {ProductContextProvider} from "../context/prodcutContext";
 import {Layout} from "../Layout/layout";
 
 function MyApp({Component, pageProps}) {

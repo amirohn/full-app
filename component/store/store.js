@@ -10,6 +10,7 @@ import {
   Button,
 } from "@mui/material";
 import {PlpWrapper} from "./store.styled";
+import {GridItem} from "../GridItem/GridItem";
 
 export const Store = () => {
   const product = useContext(ProductContext);
@@ -19,23 +20,7 @@ export const Store = () => {
       {product.length > 0 ? (
         <PlpWrapper>
           {product.map((item) => (
-            <Card key={item.id}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="250px"
-                  image={item.images[0]}
-                  alt={item.title}
-                ></CardMedia>
-                <Box>{item.title}</Box>
-              </CardActionArea>
-              <CardActions className="nonClickableArea">
-                {" "}
-                <Button size="small" color="primary">
-                  Share
-                </Button>
-              </CardActions>
-            </Card>
+            <GridItem key={item.id} gridData={item} />
           ))}
         </PlpWrapper>
       ) : (
