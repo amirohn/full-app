@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 export const PdpWapper = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
   > div {
     width: 50%;
+    max-width: 50%;
   }
   .whiteBox {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
   .addToBagButton {
     width: 100%;

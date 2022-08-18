@@ -16,29 +16,28 @@ export const PdpCard = ({PDPdata}) => {
         <CardContent>
           <h1>{PDPdata.title}</h1>
           <PdpWapper>
-            <Box>
+            <Box sx={{padding: "1rem"}}>
               <CardMedia
                 component="img"
-                image={PDPdata.images[2]}
+                image={PDPdata.image}
                 alt={PDPdata.title}
               />
             </Box>
             <Box className="whiteBox">
               <Stack spacing={3} direction="column">
                 <Typography
-                  sx={{fontSize: 14}}
+                  sx={{mb: 1.5}}
                   color="text.secondary"
-                  gutterBottom
+                  variant="subtitle1"
                 >
-                  {PDPdata.brand}
-                </Typography>
-                <Typography variant="h5" component="div">
                   {PDPdata.category}
                 </Typography>
-                <Typography sx={{mb: 1.5}} color="text.secondary">
-                  adjective
-                </Typography>
                 <Typography variant="body2">{PDPdata.description}</Typography>
+                {
+                  <Typography variant="body1" color="initial">
+                    {PDPdata.price}
+                  </Typography>
+                }
                 <Box className="addToBagButton">
                   <Button variant="contained">Add To Bag</Button>
                   <Box>1</Box>
