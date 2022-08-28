@@ -5,3 +5,16 @@ export const shorten = (title) => {
   }`;
   return newTitle;
 };
+
+export const isInCart = (state, id) => {
+  const exists = !!state.selectedItems.find((item) => item.id === id);
+  return exists;
+};
+
+export const quantityCount = (state, id) => {
+  const indexI = state.selectedItems.findIndex((item) => item.id === id);
+  if (indexI === -1) {
+    return false;
+  }
+  return state.selectedItems[indexI].quantity;
+};

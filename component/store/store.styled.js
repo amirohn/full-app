@@ -8,7 +8,7 @@ export const PlpWrapper = styled.div`
   padding: 4rem 0;
   min-height: 280px;
 
-  div {
+  > div {
     max-width: 200px;
 
     display: flex;
