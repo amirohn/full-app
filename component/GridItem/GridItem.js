@@ -8,9 +8,15 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import {shorten} from "../sharedFunctions/functions";
+import {shorten, isInCart, quantityCount} from "../sharedFunctions/functions";
+import {useContext} from "react";
+import {CartContext} from "../../context/cartContext";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export const GridItem = ({gridData}) => {
+  const {state, dispatch} = useContext(CartContext);
   return (
     <Card
       sx={{
@@ -29,20 +35,61 @@ export const GridItem = ({gridData}) => {
             sx={{padding: "0.8rem"}}
           />
         </Box>
-        <Box sx={{padding: "0 0.8rem ", display: "flex"}}>
-          <Typography variant="subtitle1" color="initial">
+        <Box
+          sx={{padding: "0 0.8rem ", display: "flex", flexDirection: "column"}}
+        >
+          <Typography as="p" variant="subtitle1" color="initial">
             {shorten(gridData.title)}
           </Typography>
-          <Typography variant="subtitle1" color="initial">
+          <Typography as="p" variant="subtitle1" color="initial">
             {gridData.price}
           </Typography>
         </Box>
       </CardActionArea>
       <CardActions className="nonClickableArea">
         {" "}
-        <Button size="small" color="primary" variant="contained">
-          ADD TO BAG
-        </Button>
+        {isInCart(state, gridData.id) ? (
+          <>
+            {quantityCount(state, gridData.id) === 1 ? (
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                onClick={() => dispatch({type: "DECREASE", payload: gridData})}
+              >
+                <DeleteOutlineIcon />
+              </Button>
+            ) : (
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                onClick={() =>
+                  dispatch({type: "REMOVE_ITEM", payload: gridData})
+                }
+              >
+                <RemoveIcon />
+              </Button>
+            )}
+            <Button
+              size="small"
+              color="primary"
+              variant="contained"
+              onClick={() => dispatch({type: "INCREASE", payload: gridData})}
+            >
+              <AddIcon />
+            </Button>
+          </>
+        ) : (
+          <Button
+            size="small"
+            color="primary"
+            variant="contained"
+            onClick={() => dispatch({type: "ADD_ITEM", payload: gridData})}
+          >
+            ADD TO BAG
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
