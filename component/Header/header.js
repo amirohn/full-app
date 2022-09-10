@@ -14,8 +14,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import Image from "next/image";
 import logoImage from "../../asset/logo.png";
+import {useContext} from "react";
+import {CartContext} from "../../context/cartContext";
 
 export const Header = () => {
+  const {state} = useContext(CartContext);
   function notificationsLabel(count) {
     if (count === 0) {
       return "no notifications";
@@ -65,7 +68,7 @@ export const Header = () => {
           <ListItem>
             <Box>
               <IconButton aria-label={notificationsLabel(100)}>
-                <Badge color="error" badgeContent={2}>
+                <Badge color="error" badgeContent={state.itemsCounter}>
                   <Link href="#">
                     <ShoppingCartIcon fontSize="large" />
                   </Link>
