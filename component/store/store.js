@@ -16,7 +16,6 @@ export const Store = () => {
   const product = useContext(ProductContext);
   return (
     <Container maxWidth="lg">
-      <h1>this is Store</h1>
       {product.length > 0 ? (
         <PlpWrapper>
           {product.map((item) => (

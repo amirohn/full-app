@@ -11,7 +11,7 @@ export const ProductContextProvider = ({children}) => {
       setProducts(await getProducts());
     };
     getApi();
-  }, []);
+  }, [products]);
   return (
     <ProductContext.Provider value={products}>
       {children}
